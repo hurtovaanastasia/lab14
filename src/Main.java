@@ -1,11 +1,19 @@
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 public class Main {
     public static void main(String[] args) {
-        String [] adresses = {"0945.192.168.1.1", "256.300.10.44", "10.0.0.1", "172.16.254.1", "1.2.3.4", "127.0.0.1", "999.999.999.999", "192.168.01.1"};
+        Scanner input = new Scanner(System.in);
+        System.out.print("ВВедите размерность массива: ");
+        int n = input.nextInt();
+        String [] adresses = new String[n];
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < n; i++) {
+            adresses[i] = input.nextLine();
+        }
         String perfectIP = "^((25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)$";
         Pattern pattern = Pattern.compile(perfectIP);
-        System.out.println("Найденные IP-адреса в строке:");
+        System.out.println("Найденные IP-адреса в массиве:");
         for(String ip: adresses) {
             Matcher matcher = pattern.matcher(ip);
             while (matcher.find()) {
